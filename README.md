@@ -1,8 +1,8 @@
-# Fire-recognition R6 source candidate
+# Fire-recognition R6 source archive
 
-This is a **local release candidate**, not a published repository or a claim that the reported results have been independently reproduced. It contains source for the revised 1,100-image, 427-component internal study: the initial Standard/HN/Focal Sampling comparison and the later fixed random-negative replay control. The random control was designed after HN TEST results were inspected.
+This source archive documents the revised 1,100-image, 427-component internal study: the initial Standard/HN/Focal Sampling comparison and the later fixed random-negative replay control. It does not claim that the reported results have been independently reproduced. The random control was designed after HN TEST results were inspected.
 
-The main `src/` tree is based on the frozen source snapshot of the later random-control release. Six files that differed in the earlier formal three-arm execution are preserved under `formal_release_source/`; see `SOURCE_PROVENANCE.md`. The package retains licensing notices from the preceding public source archive while replacing its outdated study code. It is a curated post-experiment package, not a byte-identical Git commit of either historical run.
+The main `src/` tree is based on the frozen source snapshot of the later random-control release. Six files that differed in the earlier formal three-arm execution are preserved under `formal_release_source/`; see `SOURCE_PROVENANCE.md`. This is a curated post-experiment package, not a byte-identical Git commit of either historical run.
 
 ## What is included
 
@@ -18,7 +18,7 @@ No D-Fire image or label, study-specific selection/fold map, model checkpoint, i
 
 Pure source syntax and selected synthetic code paths can be checked without study data. Recomputing reported metrics requires an authorized complete prediction table, matching CAL thresholds, the exact component/fold mapping, and the documented analysis environment. Independent retraining additionally requires lawful image access and the initial model assets. No full retraining or bootstrap rerun is claimed for this candidate.
 
-The recorded environment was Windows, Python 3.11.9, PyTorch 2.11.0+cu128, torchvision 0.26.0+cu128, and Ultralytics 8.4.92. `requirements/` records the original dependency versions; it contains no packages or pretrained weights. `pyproject.toml` uses a candidate package version until an actual release is approved.
+The recorded environment was Windows, Python 3.11.9, PyTorch 2.11.0+cu128, torchvision 0.26.0+cu128, and Ultralytics 8.4.92. `requirements/` records the original dependency versions; it contains no packages or pretrained weights.
 
 ## Code map
 
@@ -31,4 +31,4 @@ The recorded environment was Windows, Python 3.11.9, PyTorch 2.11.0+cu128, torch
 | `formal_release_source/` | Six formal-release source files that differ from the later snapshot |
 | `analysis/` | Source for reported statistical, sensitivity, cost, and figure calculations; requires retained inputs |
 
-The code is source-only under the recorded licence and third-party notices. Publication still requires rights review of the exact candidate tree. No new GitHub repository, release, or Zenodo record has been created by this local build.
+The code is source-only under the recorded licence and third-party notices. Its availability does not imply that the study data, trained models, or image-level results are available. Run-specific source and input limitations remain as stated above.

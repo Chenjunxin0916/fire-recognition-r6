@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fire-recognition-r6-source"
-version = "0.0.0"
-description = "Local source candidate for the revised-split fire-recognition R6 study"
+version = "0.1.0"
+description = "Source archive for the revised-split fire-recognition R6 study"
 requires-python = ">=3.11,<3.12"
 license = "AGPL-3.0-only"
 license-files = ["LICENSE", "THIRD_PARTY_LICENSES/*"]
