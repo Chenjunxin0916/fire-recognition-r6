@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "Fire-recognition R6 revised-split source archive"
+version: 0.1.1
+date-released: 2026-10-22
+type: software
+license: AGPL-3.0-only
+message: "Please cite the version-specific Zenodo record for this source archive."
+authors:
+  - given-names: Junxin
+    family-names: Chen
+    affiliation: Hangzhou Dianzi University Information Engineering College
+abstract: >-
+  Curated source archive for the revised-split internal fire-recognition study,
+  including the initial three-arm comparison and later random-negative replay
+  control. The archive omits the exact study selection and fold map, predictions,
+  thresholds, weights, and private run records required to recompute reported
+  results. It is not a byte-identical commit of either historical execution.
+keywords:
+  - fire recognition
+  - hard-negative replay
+  - reproducibility

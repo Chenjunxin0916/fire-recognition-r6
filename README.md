@@ -1,5 +1,7 @@
 # Fire-recognition R6 source archive
 
+Version `v0.1.1` adds citation metadata for archival. The study implementation and its stated reproduction limits are unchanged from `v0.1.0`.
+
 This source archive documents the revised 1,100-image, 427-component internal study: the initial Standard/HN/Focal Sampling comparison and the later fixed random-negative replay control. It does not claim that the reported results have been independently reproduced. The random control was designed after HN TEST results were inspected.
 
 The main `src/` tree is based on the frozen source snapshot of the later random-control release. Six files that differed in the earlier formal three-arm execution are preserved under `formal_release_source/`; see `SOURCE_PROVENANCE.md`. This is a curated post-experiment package, not a byte-identical Git commit of either historical run.
