@@ -1,0 +1,60 @@
+schema_version: 1
+environment:
+  os: Windows
+  gpu: NVIDIA GeForce RTX 5080
+  python: 3.11.9
+  torch: 2.11.0+cu128
+  torchvision: 0.26.0+cu128
+  ultralytics: 8.4.92
+  lock: requirements/lock-win-py311-cu128.txt
+  hardware_confirmation: READ_ONLY_OBSERVATION_REQUIRED; execution approval must confirm
+    intended machine
+precision:
+  amp: false
+  matmul_allow_tf32: false
+  cudnn_allow_tf32: false
+  float32_matmul_precision: highest
+  training_dtype: torch.float32
+  inference_half: false
+fixed:
+  epochs: 40
+  batch: 64
+  nbs: 64
+  imgsz: 384
+  workers: 4
+  optimizer: AdamW
+  warmup_epochs: 0
+  accumulate: 1
+  device: cuda:0
+  resume: false
+  compile: false
+failure:
+  oom: fail_current_task_and_stop_queue
+  automatic_batch_reduction: false
+  cpu_fallback: false
+  automatic_retry: false
+  precision_fallback: false
+  partial_success: false
+  resume: completed-task skip after hash validation; failed task restarts from pretrained
+    weights in new attempt
+checkpoint_policy: fixed_epochs_last
+initialization: same pretrained SHA256, seed-paired 2-class head; record and compare
+  initialized model state SHA256
+mining:
+  seed: 42
+  epochs: 30
+  models_per_outer_fold: 3
+  reuse_across_training_seeds: true
+  reuse_historical: false
+budget_gate:
+  classifier_updates: 40*ceil((660+K)/64) for HN; 440 otherwise
+  standard_focal_exposures: 26400
+  hn_max_K_for_440_updates: 44
+  hn_K_min: 0
+  if_K_zero: keep method definition and flag HN comparison uninformative
+  if_K_above_44: retain complete H; updates follow actual ceil batches for 40 epochs
+  policy: B_FULL_40_EPOCHS
+  strict_equal_updates_claim_allowed: false
+  version: FULL-STRATEGY-B-40E-20261020-V1
+training_protocol_version: FULL-STRATEGY-B-40E-20261020-V1
+budget_policy_version: FULL-STRATEGY-B-40E-20261020-V1

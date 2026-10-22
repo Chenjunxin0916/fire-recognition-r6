@@ -1,0 +1,9 @@
+# Candidate install list. The frozen runtime lock in requirements/ is the execution record.
+# Install PyTorch/torchvision for the intended CUDA platform from their official channel first.
+numpy==2.4.4
+pandas==3.0.3
+scikit-learn==1.9.0
+matplotlib==3.11.0
+PyYAML==6.0.3
+Pillow==12.2.0
+ultralytics==8.4.92

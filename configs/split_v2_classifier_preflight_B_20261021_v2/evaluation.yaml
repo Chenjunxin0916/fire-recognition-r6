@@ -1,0 +1,49 @@
+schema_version: 1
+status: ADAPTER_CPU_VALIDATED_NO_FORMAL_RESULTS
+checkpoint: last.pt
+methods:
+- standard
+- hn
+- focal
+primary: original_no_TTA
+secondary: horizontal_flip_average_TTA_for_all_methods
+threshold:
+  start: 0.01
+  end: 0.99
+  step: 0.005
+  selection: 'existing search_thresholds: F1, recall, lower center of each prediction
+    plateau, then lowest center'
+order: complete and freeze all cal thresholds for a cell before any test inference
+cal_test_rows: 220
+pairing:
+- seed
+- filename
+- outer_fold
+- group_id
+- label
+seed_summary: pool 5 held-out folds to 1100 test images per seed; mean and sample
+  SD(ddof=1) across 3 seeds
+comparisons:
+- hn-standard
+- focal-standard
+- hn-focal
+bootstrap:
+  iterations: 10000
+  seed: 20260914
+  unit: 427 conservative visual components within outer folds; no camera/event independence
+    certification
+  interval: paired 95% percentile CI
+  scope: conditional on frozen models and thresholds, not training uncertainty
+interpretation: descriptive comparisons with effect sizes and CIs; no unadjusted confirmatory
+  multi-pair significance claim
+prohibited: Do not call old formal_scheme_b=True three-method analysis; do not relabel
+  random_negative as Standard
+method_ids:
+  primary:
+  - cls_standard
+  - cls_hn
+  - cls_focal
+  secondary:
+  - cls_standard_tta
+  - cls_hn_tta
+  - cls_focal_tta

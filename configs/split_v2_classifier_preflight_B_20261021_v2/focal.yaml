@@ -1,0 +1,11 @@
+schema_version: 1
+method: focal
+base: configs/split_v2_final_B_20261020_v1/base.yaml
+runtime: configs/split_v2_final_B_20261020_v1/runtime.yaml
+focal_sampling:
+  enabled: true
+  at_epoch: 10
+  gamma: 0.5
+train_entry: existing train_focal
+replay: none
+note: These wrapper configs are for run_sealed_three_arm.py, not legacy CLI parsers

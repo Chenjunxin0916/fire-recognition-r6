@@ -1,0 +1,17 @@
+# A03 source release
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+.test-venv/
+/engineering_example/
+/public_runs/
+/data/
+/runs/
+/weights/
+*.pt
+*.pth
+*.onnx
+.env
+*.log

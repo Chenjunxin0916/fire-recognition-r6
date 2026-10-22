@@ -1,0 +1,8 @@
+schema_version: 1
+method: standard
+base: configs/split_v2_final_B_20261020_v1/base.yaml
+runtime: configs/split_v2_final_B_20261020_v1/runtime.yaml
+focal_sampling: null
+train_entry: existing train_model
+replay: none
+note: These wrapper configs are for run_sealed_three_arm.py, not legacy CLI parsers

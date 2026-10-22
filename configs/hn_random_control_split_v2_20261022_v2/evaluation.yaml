@@ -1,0 +1,8 @@
+schema_version: 1
+study_kind: HN_RANDOM_CONTROL
+primary: original_no_TTA
+secondary: horizontal_flip_average_TTA
+bootstrap:
+  iterations: 10000
+  seed: 20260914
+inference: exploratory_post_outcome_internal_extension

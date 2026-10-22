@@ -1,0 +1,109 @@
+schema_version: 1
+campaign: focal_split_v2_classifier_preflight_b_20261021_v2
+engineering_only: false
+data:
+  dataset_profile: dfire_split_v2_frozen_author_final_v1
+  dataset_id: dfire_1100_components427_eoi_snapshot_20261020_v1
+  training_source: D-Fire
+  original_training_data_allowed: false
+  expected_count: 1100
+  external_evaluation_count: 0
+  folds: data/processed/dfire_eoi_snapshot_20261020_v1/folds.csv
+  images: data/processed/dfire_eoi_snapshot_20261020_v1/images
+  labels: data/processed/dfire_eoi_snapshot_20261020_v1/labels
+  processed_manifest: data/processed/dfire_eoi_snapshot_20261020_v1/manifest.json
+  source_contract: data/processed/dfire_eoi_snapshot_20261020_v1/selection_contract.json
+  input_snapshot_manifest: data/processed/dfire_eoi_snapshot_20261020_v1/input_snapshot.json
+  input_snapshot_manifest_sha256: b0ee8febad1028851912cb7de39fa10e2e66ffbb18adb24b64f3ec8663b5f7a1
+offline:
+  manifest: weights/pretrained/manifest.json
+  config_dir: runs/.ultralytics
+  ultralytics_version: 8.4.92
+seeds:
+- 42
+- 2026
+- 3407
+outer_folds:
+- 0
+- 1
+- 2
+- 3
+- 4
+arms:
+- hn
+- random_negative
+scheme_b:
+  mining_seed: 42
+  random_negative_identity_seed: 20260914
+  miner_epochs: 30
+training:
+  execution_profile: scheme_b_fp32_v1
+  device: cuda:0
+  workers: 4
+  optimizer: AdamW
+  lr0: 0.001
+  lrf: 0.01
+  momentum: 0.9
+  weight_decay: 0.0005
+  warmup_epochs: 0.0
+  warmup_momentum: 0.8
+  warmup_bias_lr: 0.0
+  cos_lr: false
+  deterministic: true
+  patience: 0
+  amp: false
+  cache: false
+  compile: false
+classifier:
+  weights: weights/pretrained/yolo26s-cls.pt
+  epochs: 40
+  batch: 64
+  imgsz: 384
+  augmentation:
+    auto_augment: randaugment
+    erasing: 0.4
+    fliplr: 0.5
+    flipud: 0.0
+    scale: 0.5
+    hsv_h: 0.015
+    hsv_s: 0.7
+    hsv_v: 0.4
+    dropout: 0.0
+detector:
+  weights: weights/pretrained/yolo26s.pt
+  epochs: 1
+  batch: 16
+  imgsz: 640
+  augmentation:
+    mosaic: 0.0
+    close_mosaic: 0
+    mixup: 0.0
+    cutmix: 0.0
+    copy_paste: 0.0
+    fliplr: 0.0
+    flipud: 0.0
+    degrees: 0.0
+    translate: 0.0
+    scale: 0.0
+    shear: 0.0
+    perspective: 0.0
+    hsv_h: 0.0
+    hsv_s: 0.0
+    hsv_v: 0.0
+inference:
+  invalid_geometry: exclude_non_positive_area_and_audit
+  perturbation_seed: 20260914
+  batch: 64
+  confidence: 0.001
+  max_det: 300
+  tile_size: 640
+  overlap: 0.2
+evaluation:
+  threshold:
+    start: 0.01
+    end: 0.99
+    step: 0.005
+  weight_step: 0.05
+budget_policy: B_FULL_40_EPOCHS
+budget_policy_version: FULL-STRATEGY-B-40E-20261020-V1
+training_protocol_version: FULL-STRATEGY-B-40E-20261020-V1
